@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coach Program Page Sprint | Program pages for online fitness coaches</title>
+<meta name="description" content="I rebuild program pages for online fitness coaches so Instagram visitors see who it's for and how to join on the first phone screen.">
+<meta property="og:title" content="Coach Program Page Sprint">
+<meta property="og:description" content="Make your program page clear before anyone scrolls.">
+<meta property="og:image" content="images/hero-phones.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='3' width='14' height='26' rx='4' fill='%23FAF7F2' stroke='%231F1D1A' stroke-width='2'/%3E%3Crect x='12' y='22' width='8' height='3' rx='1' fill='%231F1D1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:wght@400;600&display=swap">
+<style>
+:root{--paper:#FAF7F2;--ink:#1F1D1A;--stone:#5F5A52;--clay:#C2410C;--clayd:#9A3412;--line:rgba(95,90,82,.25)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAF7F2;color:#1F1D1A;font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1F1D1A}
+h1,h2,h3{text-wrap:balance;font-weight:400;margin:0}
+p{margin:0}
+img{display:block;max-width:100%}
+button{font:inherit}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.site{position:relative;width:100%;overflow-x:clip;background:var(--paper)}
+.wrap{max-width:1144px;margin:0 auto;padding:0 32px}
+.serif{font-family:'Gloock',Georgia,serif;font-weight:400}
+.muted{color:var(--stone)}
+.small{font-size:16px;line-height:1.45}
+.body{font-size:18px;line-height:1.6}
+.h2{font-family:'Gloock',Georgia,serif;font-size:52px;line-height:1.05;letter-spacing:-.012em}
+.label{font-size:16px;font-weight:600;line-height:1.4;color:var(--stone)}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:16px 32px;border-radius:6px;background:var(--clay);color:#FFFFFF;font-size:17px;font-weight:600;line-height:1;text-decoration:none;white-space:nowrap;transition:background-color 150ms}
+.cta:hover{background:var(--clayd);color:#FFFFFF}
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sec{position:relative;padding:128px 0;border-top:1px solid var(--line)}
+.ink{background:var(--ink);color:var(--paper);border-top:0}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;min-height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.logo-mark{width:14px;height:24px;border:1.5px solid var(--ink);border-radius:4px;position:relative;flex:none}
+.logo-mark:after{content:"";position:absolute;left:3px;right:3px;bottom:3px;height:4px;border-radius:1px;background:var(--ink)}
+.logo-text{font-family:'Gloock',Georgia,serif;font-size:20px;line-height:1}
+
+/* hero */
+.hero{padding:72px 0 112px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:64px;align-items:center}
+.eyebrow{font-size:16px;font-weight:600;line-height:1.4;color:var(--stone);text-wrap:balance}
+.h1{font-family:'Gloock',Georgia,serif;font-size:80px;line-height:.98;letter-spacing:-.02em;margin-top:24px}
+.h1 em{font-style:normal;text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.12em}
+.lede{font-size:20px;line-height:1.55;color:var(--stone);max-width:520px;margin-top:32px}
+.hero-act{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.hero-fig{margin:0}
+.hero-fig img{width:100%;height:auto}
+.hero-fig figcaption{margin-top:16px}
+.hero-fig .img-desk{display:block}.hero-fig .img-phone{display:none}
+
+/* fade-in */
+.motion .rv{opacity:0;transition:opacity .7s ease-out}
+.motion .rv.is-in{opacity:1}
+
+/* problem */
+.prob-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
+.stat{font-family:'Gloock',Georgia,serif;font-size:44px;line-height:1.1;color:var(--paper)}
+.tiles{display:flex;gap:10px;margin-top:24px}
+.tile{width:34px;height:60px;border-radius:7px;border:1px solid var(--stone);position:relative}
+.tile:after{content:"";position:absolute;left:6px;right:6px;bottom:7px;height:6px;border-radius:2px;background:var(--stone)}
+.tile.ok{background:var(--paper);border-color:var(--paper)}
+.tile.ok:after{background:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;font-size:16px;line-height:1.4;color:var(--paper)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid var(--stone);vertical-align:-2px;margin-right:8px}
+.legend i.ok{background:var(--paper);border-color:var(--paper)}
+.issues{list-style:none;margin:32px 0;padding:0}
+.issues li{border-top:1px solid var(--stone);padding:20px 0;font-size:20px;line-height:1.45}
+.issues li:last-child{border-bottom:1px solid var(--stone)}
+
+/* solution */
+.sol-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:end}
+.sol-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:96px;align-items:center;margin-top:72px}
+.compare{position:relative;width:300px;aspect-ratio:480/966;margin:0 auto;user-select:none;touch-action:pan-y}
+.compare img{position:absolute;inset:0;width:100%;height:100%}
+.cmp-after{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+.cmp-handle{position:absolute;top:4%;bottom:6%;left:50%;width:2px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.cmp-handle:after{content:"";position:absolute;top:50%;left:50%;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.cmp-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.cmp-range:focus-visible + .cmp-focus{outline:2px solid var(--ink);outline-offset:6px}
+.cmp-focus{position:absolute;inset:0;border-radius:24px;pointer-events:none}
+.cmp-tags{display:flex;justify-content:space-between;width:300px;margin:0 auto 16px;font-size:16px;font-weight:600}
+.cmp-note{width:300px;margin:16px auto 0}
+.fixes{list-style:none;margin:0;padding:0}
+.fixes li{border-top:1px solid var(--line);padding:32px 0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:baseline}
+.fixes li:last-child{border-bottom:1px solid var(--line)}
+.fixes strong{font-family:'Gloock',Georgia,serif;font-weight:400;font-size:32px;line-height:1.1}
+.fixes span{font-size:18px;line-height:1.6}
+
+/* offer */
+.offer-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:end}
+.ready{border-left:1px solid var(--line);padding-left:32px}
+.deliv{list-style:none;margin:72px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 32px}
+.deliv li{border-top:1px solid var(--ink);padding-top:20px}
+.deliv strong{display:block;font-size:22px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.deliv span{display:block;font-size:18px;line-height:1.6}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:64px;padding-top:32px;border-top:1px solid var(--line)}
+.terms strong{display:block;font-weight:600;color:var(--ink);margin-bottom:8px}
+
+/* process */
+.tl{margin:56px 0 0}
+.tl ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.tl li{position:relative;padding:40px 32px 0 0}
+.tl li:before{content:"";position:absolute;top:-8px;left:0;width:16px;height:16px;border-radius:50%;border:1px solid var(--ink);background:var(--paper)}
+.tl li:last-child:before{background:var(--ink)}
+.tl strong{display:block;font-size:22px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.tl span{display:block;font-size:18px;line-height:1.6}
+.demo-line{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;margin-top:96px;padding-top:64px;border-top:1px solid var(--line)}
+
+/* demo builds */
+.demos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 24px;margin:64px 0 0;list-style:none;padding:0}
+.demos li{display:flex;flex-direction:column;gap:12px}
+.thumb{aspect-ratio:16/10;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.demos strong{font-size:20px;font-weight:600;line-height:1.3}
+.demos .desc{font-size:16px;line-height:1.5}
+.view{align-self:flex-start;min-height:44px;padding:0;border:0;background:none;color:var(--ink);font-size:16px;font-weight:600;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.view:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:2px}
+
+/* live demo viewer */
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(31,29,26,.88);display:flex;align-items:center;justify-content:center;padding:24px}
+.viewer[hidden]{display:none}
+.viewer-panel{position:relative;background:var(--paper);border-radius:10px;width:min(1180px,100%);height:min(900px,100%);max-height:100%;display:flex;flex-direction:column;padding:24px 32px 32px;overflow:hidden}
+.viewer-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.viewer-head h3{font-family:'Gloock',Georgia,serif;font-size:30px;line-height:1.1}
+.viewer-tools{display:flex;align-items:center;gap:12px}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{min-height:44px;padding:0 18px;border:0;background:var(--paper);color:var(--ink);font-size:16px;font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.close{min-height:44px;padding:0 16px;border:1px solid var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);font-size:16px;font-weight:600;cursor:pointer}
+.close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.stage{position:relative;flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-start}
+.desk{position:relative;width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.desk-bar{height:28px;border-bottom:1px solid var(--line)}
+.desk-screen{position:relative;width:100%;overflow:hidden}
+.desk-screen iframe{position:absolute;top:0;left:0;width:1280px;border:0;transform-origin:0 0;background:var(--paper)}
+.phone{position:relative;border:10px solid var(--ink);border-radius:36px;overflow:hidden;background:var(--paper)}
+.phone-screen{position:relative;overflow:hidden}
+.phone-screen iframe{position:absolute;top:0;left:0;width:390px;height:844px;border:0;transform-origin:0 0;background:var(--paper)}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--stone)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:center}
+.portrait{margin:0}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.facts{list-style:none;margin:16px 0 0;padding:0}
+.facts li{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;font-size:16px;line-height:1.5;color:var(--stone)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:64px;align-items:start}
+.faq-side{position:sticky;top:112px}
+.thread{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:28px}
+.thread-head{display:flex;align-items:center;gap:12px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.thread-head img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.thread-head strong{display:block;font-size:18px;font-weight:600;line-height:1.3}
+.qa2{display:flex;flex-direction:column;gap:10px}
+.bub{max-width:78%;padding:14px 20px;border-radius:22px;font-size:18px;line-height:1.5;margin:0}
+.bub.q{align-self:flex-start;background:var(--paper);border:1px solid var(--line);border-bottom-left-radius:6px;font-weight:600;line-height:1.4}
+.bub.a{align-self:flex-end;background:var(--ink);color:var(--paper);border-bottom-right-radius:6px;font-weight:400}
+
+/* final */
+.final{padding:144px 0 128px}
+.final h2{font-family:'Gloock',Georgia,serif;font-size:88px;line-height:.98;letter-spacing:-.02em;max-width:900px}
+.final-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start;margin-top:64px;padding-top:32px;border-top:1px solid var(--line)}
+
+/* footer */
+.ftr{border-top:1px solid var(--line);color:var(--stone)}
+.ftr .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px}
+.ftr a.wa{color:var(--ink);text-decoration:underline;padding:13px 0}
+
+/* tablet */
+@media (max-width:1023px){
+.hero-grid,.prob-grid,.sol-head,.sol-grid,.offer-head,.about,.faq,.final-grid,.demo-line{grid-template-columns:minmax(0,1fr)}
+.hero-grid{gap:56px}.hero-fig{max-width:440px}
+.h1{font-size:64px}
+.sol-head,.offer-head{gap:24px}
+.sol-grid{gap:56px}
+.ready{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+.deliv{grid-template-columns:repeat(2,minmax(0,1fr))}
+.demos{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tl{margin-left:8px}
+.tl ol{grid-template-columns:minmax(0,1fr);border-top:0;border-left:1px solid var(--ink)}
+.tl li{padding:0 0 40px 40px}
+.tl li:before{top:2px;left:-8px}
+.tl li:last-child{padding-bottom:0}
+.final h2{font-size:64px}
+.portrait{max-width:440px}
+.faq-side{position:static}
+}
+/* phone */
+@media (max-width:767px){
+.wrap{padding:0 16px}
+.hdr .wrap{min-height:56px}
+.logo-text{font-size:18px}
+.hero{padding:40px 0 64px}
+.h1{font-size:40px;line-height:1.04;letter-spacing:-.01em;margin-top:16px}
+.lede{font-size:18px;line-height:1.6;margin-top:16px}
+.hero-act{align-items:stretch}
+.hero-act .cta{width:100%}
+.hero-fig{max-width:220px;margin:0 auto}
+.hero-fig .img-desk{display:none}.hero-fig .img-phone{display:block}
+.sec{padding:72px 0}
+.h2{font-size:34px;line-height:1.1}
+.stat{font-size:40px}
+.tiles{gap:7px}.tile{width:30px;height:52px}
+.issues li{font-size:18px}
+.compare,.cmp-tags,.cmp-note{width:240px}
+.fixes li{grid-template-columns:minmax(0,1fr);gap:8px;padding:24px 0}
+.fixes strong{font-size:26px}
+.deliv{grid-template-columns:minmax(0,1fr);gap:32px;margin-top:48px}
+.terms{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:48px}
+.demo-line{margin-top:64px;padding-top:40px;gap:16px}
+.demos{grid-template-columns:minmax(0,1fr);gap:40px}
+.viewer{padding:0;align-items:stretch}
+.viewer-panel{border-radius:0;padding:16px}
+.viewer-head h3{font-size:24px}
+.about{gap:48px}
+.thread{padding:16px;border-radius:22px;gap:20px}
+.bub{max-width:90%;padding:12px 16px}
+.final{padding:88px 0 72px}
+.final h2{font-size:42px;line-height:1.04}
+.final-grid{gap:32px;margin-top:40px}
+.final .cta{width:100%}
+.ftr .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.motion .rv{opacity:1;transition:none}
+}
+</style>
+</head>
+<body>
+<div class="site" id="site">
+
+<header class="hdr">
+<div class="wrap">
+<a class="logo" href="#top" aria-label="NexGen Funnels, back to top"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">NexGen Funnels</span></a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<p class="eyebrow">For online fitness coaches with an 8 to 12 week program</p>
+<h1 class="h1">Make your program page clear <em>before</em> anyone scrolls.</h1>
+<p class="lede">I rebuild your program page so Instagram visitors see who it's for and how to join on the first phone screen.</p>
+<div class="hero-act">
+<a class="cta" href="https://calendly.com/kiran-nexgenfunnels/growth-mapping-call" target="_blank" rel="noopener">Book a 15-minute call</a>
+<p class="small muted">Pick a time. I'll send a short review of your current page within 24 hours.</p>
+</div>
+</div>
+<figure class="hero-fig">
+<img class="img-desk" src="images/hero-phones.webp" alt="Three concept program pages on phones: For women over 40, Feel strong again in 8 weeks; For busy professionals, Get strong in 12 weeks; For first-time runners, Run your first 10K in 10 weeks. Each has one dark button." width="880" height="670" fetchpriority="high">
+<img class="img-phone" src="images/hero-phone.webp" alt="Concept program page on a phone: For busy professionals, Get strong in 12 weeks, and one dark Apply now button" width="400" height="834">
+<figcaption class="small muted">Concept: example program pages, not client work</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sec ink" aria-labelledby="problem-title">
+<div class="wrap prob-grid">
+<div class="rv">
+<p class="stat" aria-hidden="true">6 of 8</p>
+<div class="tiles" role="img" aria-label="Of 8 coach program pages checked on a phone, 6 had a first screen that didn't show who it's for and one clear way to join. 2 did.">
+<div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile ok"></div><div class="tile ok"></div>
+</div>
+<p class="legend" aria-hidden="true"><span><i></i>First screen unclear</span><span><i class="ok"></i>First screen clear</span></p>
+</div>
+<div class="rv">
+<h2 id="problem-title" class="h2">Your followers tap through. Then they have to guess.</h2>
+<p class="body" style="margin-top:24px">I checked 8 coach program pages on a phone. On 6 of them, the first screen didn't show who the program is for and one clear way to join. What I saw instead:</p>
+<ul class="issues">
+<li>The program's name where "who it's for" should be</li>
+<li>Several different buttons competing for one decision</li>
+<li>The way to join buried a few screens down</li>
+</ul>
+<p class="body">If you've ever thought "I'm posting content but not getting clients," this can be part of it. A follower who can't tell if it's for them, or can't find how to join, may leave, or end up in your DMs asking.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" style="border-top:0" aria-labelledby="solution-title">
+<div class="wrap">
+<div class="sol-head rv">
+<h2 id="solution-title" class="h2">Answer the two questions every visitor has.</h2>
+<p class="body">Is this for me? How do I join? Your fixed first screen answers both, before your program's name or anything else.</p>
+</div>
+<div class="sol-grid rv">
+<div>
+<div class="cmp-tags"><span>Before</span><span>After</span></div>
+<div class="compare" id="compare">
+<img src="images/before.webp" alt="Before, concept of a typical first screen: Online coaching, 12 Week Program, and three outlined buttons reading Learn more, Free trial and Prepay" width="480" height="966" loading="lazy">
+<div class="cmp-after" id="cmpAfter"><img src="images/after.webp" alt="After, concept of the same page fixed: For busy professionals, Get strong in 12 weeks, and one dark Apply now button" width="480" height="966" loading="lazy"></div>
+<div class="cmp-handle" id="cmpHandle"></div>
+<input class="cmp-range" id="cmpRange" type="range" min="0" max="100" step="1" value="50" aria-label="Drag to compare the typical first screen with the fixed one">
+<span class="cmp-focus"></span>
+</div>
+<p class="cmp-note small muted">Drag to compare. Concept screens, not client pages.</p>
+</div>
+<ul class="fixes">
+<li><strong>Say who it's for.</strong><span>Name your client the way they'd describe themselves, like busy professionals or women over 40.</span></li>
+<li><strong>Say what changes.</strong><span>One line on where your program gets them.</span></li>
+<li><strong>Give one way to join.</strong><span>One button with the same label everywhere, visible without scrolling.</span></li>
+</ul>
+</div>
+<p class="body muted" style="margin-top:48px;max-width:640px">Each step removes one reason people stop: guessing who it's for, wondering what they'd get, and hunting for the button.</p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="offer-title">
+<div class="wrap rv">
+<div class="offer-head">
+<div>
+<h2 id="offer-title" class="h2">What you get with the Coach Program Page Sprint</h2>
+<p class="body" style="margin-top:20px">One program page, written, designed and built for visitors on their phones.</p>
+</div>
+<p class="body ready"><strong style="font-weight:600">Ready in 7 working days</strong> once I have what I need from you. One round of changes included.</p>
+</div>
+<ul class="deliv">
+<li><strong>A first-screen plan</strong><span>Your headline, who it's for and your one button, agreed with you before I build anything.</span></li>
+<li><strong>Page copy</strong><span>Written from your own words: who it's for, what changes, what's included and the common questions.</span></li>
+<li><strong>Your program page, built for phones first</strong><span>One page, with one button repeated down the page.</span></li>
+<li><strong>A proof section</strong><span>Built only from client results you already have.</span></li>
+<li><strong>A phone check</strong><span>Before and after screenshots of your first screen.</span></li>
+<li><strong>A 5-minute handover video</strong><span>How to change your text, price and button link yourself.</span></li>
+</ul>
+<div class="terms small muted">
+<p><strong>What I need from you:</strong>your program details, any client results, your photos and access to your page builder.</p>
+<p><strong>Not included:</strong>ads or Instagram content, extra pages, email or automations, or a promise of sign-ups. I won't write testimonials for you.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="process-title">
+<div class="wrap rv">
+<div class="sol-head">
+<h2 id="process-title" class="h2">How I work, and a page you can judge yourself</h2>
+<p class="body">This is a new offer, so there are no client results here yet. Instead, here's exactly what happens, and this page as an example.</p>
+</div>
+<p class="small muted" style="margin-top:48px">Plan → Write → Build → Hand over</p>
+<div class="tl">
+<ol>
+<li><strong>Plan</strong><span>I look at your current page on a phone and send you a first-screen plan. You approve it before I build.</span></li>
+<li><strong>Write</strong><span>I write the page from your words and your program details.</span></li>
+<li><strong>Build</strong><span>I build it on your page builder and check it on a phone.</span></li>
+<li><strong>Hand over</strong><span>You get the finished page and everything listed above, ready to use.</span></li>
+</ol>
+</div>
+<div class="demo-line">
+<p class="serif" style="font-size:44px;line-height:1.05">This page is the demonstration.</p>
+<p class="body">Its first screen says who it's for, what changes, and has one button. That's the same approach I'd use on yours. The phone screens above are concepts, not client pages.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="demos-title">
+<div class="wrap rv">
+<div class="sol-head">
+<h2 id="demos-title" class="h2">Demo builds</h2>
+<p class="body">Demo pages I've designed to show my approach. Not client work.</p>
+</div>
+<ul class="demos">
+<li><div class="thumb"><img src="images/demo-sukha.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Sales page</span><strong>Sukha Fertility Yoga</strong><span class="desc">Sales page for a 30-day fertility yoga program, sold as a monthly membership.</span><button class="view" type="button" data-demo="0" aria-haspopup="dialog">View demo<span class="vh">: Sukha Fertility Yoga</span></button></li>
+<li><div class="thumb"><img src="images/demo-nurture.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Landing page</span><strong>Nurture</strong><span class="desc">Landing page for a fertility wellness program built around movement and breathwork.</span><button class="view" type="button" data-demo="1" aria-haspopup="dialog">View demo<span class="vh">: Nurture</span></button></li>
+<li><div class="thumb"><img src="images/demo-flowpilot.webp" alt="" width="800" height="503" loading="lazy"></div><span class="small muted">Landing page, concept</span><strong>FlowPilot AI</strong><span class="desc">Concept landing page for an agency that sets up AI automations for small businesses.</span><button class="view" type="button" data-demo="2" aria-haspopup="dialog">View demo<span class="vh">: FlowPilot AI</span></button></li>
+<li><div class="thumb"><img src="images/demo-aara.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Website</span><strong>Studio Aara</strong><span class="desc">Website for a Bengaluru interior design studio that designs homes.</span><button class="view" type="button" data-demo="3" aria-haspopup="dialog">View demo<span class="vh">: Studio Aara</span></button></li>
+<li><div class="thumb"><img src="images/demo-auren.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Online store</span><strong>Auren</strong><span class="desc">Online store for a botanical skincare brand with five refillable formulas.</span><button class="view" type="button" data-demo="4" aria-haspopup="dialog">View demo<span class="vh">: Auren</span></button></li>
+<li><div class="thumb"><img src="images/demo-gulfline.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Lead generation site</span><strong>Gulfline Gutter Co.</strong><span class="desc">Lead generation site for a Tampa gutter installer, built around a one-minute estimate form.</span><button class="view" type="button" data-demo="5" aria-haspopup="dialog">View demo<span class="vh">: Gulfline Gutter Co.</span></button></li>
+<li><div class="thumb"><img src="images/demo-jjs.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Lead generation site</span><strong>JJ's Waste &amp; Trash Removal</strong><span class="desc">Lead generation site for an Alabama junk removal company, with a pickup planner.</span><button class="view" type="button" data-demo="6" aria-haspopup="dialog">View demo<span class="vh">: JJ's Waste and Trash Removal</span></button></li>
+<li><div class="thumb"><img src="images/demo-vv.webp" alt="" width="1200" height="750" loading="lazy"></div><span class="small muted">Lead generation site</span><strong>V&amp;V Handymen</strong><span class="desc">Lead generation site for a father-and-son handyman team in Gainesville, Georgia.</span><button class="view" type="button" data-demo="7" aria-haspopup="dialog">View demo<span class="vh">: V and V Handymen</span></button></li>
+</ul>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="about-title">
+<div class="wrap about rv">
+<figure class="portrait"><img src="images/kiran.webp" alt="Kiran Kumar" width="840" height="1050" loading="lazy"></figure>
+<div style="max-width:600px">
+<p class="label">Who you'll talk to</p>
+<h2 id="about-title" class="h2" style="margin-top:16px">Hi, I'm Kiran.</h2>
+<p class="body" style="margin-top:24px">I design and build sales funnels, landing pages and websites for coaches and local businesses, on GoHighLevel, Systeme and standalone sites.</p>
+<p class="body" style="margin-top:16px">Before this, I handled supply chain escalations at General Motors, where the job was finding what was stuck and getting it moving. I look at program pages the same way.</p>
+<ul class="facts"><li>Based in Bangalore, India. I work with coaches online.</li></ul>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="faq-title">
+<div class="wrap faq rv">
+<div class="faq-side"><h2 id="faq-title" class="h2">Before you book</h2></div>
+<div class="thread">
+<div class="thread-head">
+<img src="images/kiran.webp" alt="" width="44" height="44" loading="lazy">
+<div><strong>Kiran</strong><span class="small muted">Coach Program Page Sprint</span></div>
+</div>
+<div class="qa2"><h3 class="bub q">Do I have to switch platforms or pay for another tool?</h3><p class="bub a">No. I build on the page builder you already use. If it can't do what your page needs, I'll tell you on the call, before you commit to anything.</p></div>
+<div class="qa2"><h3 class="bub q">Is my page really the problem, or is it my content and traffic?</h3><p class="bub a">It can be both. This sprint fixes what visitors see once they tap through. It doesn't bring more visitors. The short review I send before our call points out what may be stopping people on your first screen.</p></div>
+<div class="qa2"><h3 class="bub q">How much does it cost?</h3><p class="bub a">One fixed price for the whole sprint, with no monthly fees. I share it on the call, after we've looked at your page together.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec final" id="book" aria-labelledby="cta-title">
+<div class="wrap rv">
+<h2 id="cta-title">Let's look at your program page together.</h2>
+<div class="final-grid">
+<p class="muted" style="font-size:20px;line-height:1.55;max-width:600px">Pick a time that suits you. You'll get a confirmation email straight away, and within 24 hours I'll send you a short review of your current first screen. Then we talk for 15 minutes.</p>
+<div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+<a class="cta" href="https://calendly.com/kiran-nexgenfunnels/growth-mapping-call" target="_blank" rel="noopener">Book a 15-minute call</a>
+<p class="small muted">No obligation. If the sprint isn't right for your page, I'll tell you on the call.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="ftr">
+<div class="wrap">
+<a class="logo" href="#top" aria-label="Coach Program Page Sprint, back to top"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">Coach Program Page Sprint</span></a>
+<p class="small">Kiran Kumar · Prefer WhatsApp? <a class="wa" href="https://wa.me/919113290223" target="_blank" rel="noopener">Message me</a> · © 2026</p>
+</div>
+</footer>
+
+<div class="viewer" id="viewer" hidden>
+<div class="viewer-panel" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+<div class="viewer-head">
+<div><p class="small muted">Live demo build, not client work</p><h3 id="viewerTitle">Demo</h3></div>
+<div class="viewer-tools">
+<div class="seg" role="group" aria-label="Preview size">
+<button type="button" id="btnDesk" aria-pressed="true">Desktop</button>
+<button type="button" id="btnMob" aria-pressed="false">Mobile</button>
+</div>
+<button class="close" type="button" id="viewerClose">Close</button>
+</div>
+</div>
+<div class="stage" id="stage">
+<div class="desk" id="deskWrap"><div class="desk-bar" aria-hidden="true"></div><div class="desk-screen" id="deskScreen"><p class="loading">Loading the live demo…</p></div></div>
+<div class="phone" id="phoneWrap" hidden><div class="phone-screen" id="phoneScreen"><p class="loading">Loading the live demo…</p></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* one-time fade-in per section */
+  var site = document.getElementById('site');
+  if (!reduce && 'IntersectionObserver' in window) {
+    site.classList.add('motion');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  }
+
+  /* before / after slider */
+  var range = document.getElementById('cmpRange');
+  var after = document.getElementById('cmpAfter');
+  var handle = document.getElementById('cmpHandle');
+  function setPos(v) { after.style.clipPath = 'inset(0 0 0 ' + v + '%)'; handle.style.left = v + '%'; }
+  range.addEventListener('input', function () { setPos(range.value); });
+  setPos(range.value);
+
+  /* live demo viewer */
+  var DEMOS = [
+    { name: 'Sukha Fertility Yoga', url: 'https://fertility-yoga-sales-landing-560589.hostingersite.com/' },
+    { name: 'Nurture', url: 'https://darkcyan-crow-807664.hostingersite.com/' },
+    { name: 'FlowPilot AI', url: 'https://limegreen-lyrebird-874389.hostingersite.com/' },
+    { name: 'Studio Aara', url: 'https://darkgray-partridge-447437.hostingersite.com/' },
+    { name: 'Auren', url: 'https://monumental-malabi-324ba0.netlify.app/' },
+    { name: 'Gulfline Gutter Co.', url: 'https://mediumseagreen-goldfish-129436.hostingersite.com/' },
+    { name: "JJ's Waste & Trash Removal", url: 'https://darkcyan-chough-633487.hostingersite.com/' },
+    { name: 'V&V Handymen', url: 'https://lemonchiffon-mink-373807.hostingersite.com/' }
+  ];
+  var viewer = document.getElementById('viewer');
+  var title = document.getElementById('viewerTitle');
+  var btnDesk = document.getElementById('btnDesk');
+  var btnMob = document.getElementById('btnMob');
+  var closeBtn = document.getElementById('viewerClose');
+  var stage = document.getElementById('stage');
+  var deskWrap = document.getElementById('deskWrap');
+  var deskScreen = document.getElementById('deskScreen');
+  var phoneWrap = document.getElementById('phoneWrap');
+  var phoneScreen = document.getElementById('phoneScreen');
+  var current = null, device = 'desktop', opener = null, fDesk = null, fMob = null;
+
+  function makeFrame(label, url) {
+    var f = document.createElement('iframe');
+    f.title = label;
+    f.src = url;
+    f.loading = 'eager';
+    f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+    f.setAttribute('referrerpolicy', 'no-referrer');
+    return f;
+  }
+  function fit() {
+    if (!current) return;
+    var avail = stage.clientHeight || (window.innerHeight * 0.7);
+    if (device === 'desktop') {
+      var w = deskWrap.clientWidth;
+      var s = w / 1280;
+      var h = Math.min(Math.max(avail - 30, 240), 800 * s);
+      deskScreen.style.height = h + 'px';
+      if (fDesk) { fDesk.style.height = (h / s) + 'px'; fDesk.style.transform = 'scale(' + s + ')'; }
+    } else {
+      var ph = Math.max(Math.min(avail - 20, 720), 360);
+      var ps = (ph - 20) / 844;
+      phoneScreen.style.width = (390 * ps) + 'px';
+      phoneScreen.style.height = (844 * ps) + 'px';
+      if (fMob) fMob.style.transform = 'scale(' + ps + ')';
+    }
+  }
+  function setDevice(d) {
+    device = d;
+    btnDesk.setAttribute('aria-pressed', d === 'desktop' ? 'true' : 'false');
+    btnMob.setAttribute('aria-pressed', d === 'mobile' ? 'true' : 'false');
+    deskWrap.hidden = d !== 'desktop';
+    phoneWrap.hidden = d !== 'mobile';
+    if (d === 'mobile' && !fMob) { fMob = makeFrame(current.name + ', live mobile preview', current.url); phoneScreen.appendChild(fMob); }
+    if (d === 'desktop' && !fDesk) { fDesk = makeFrame(current.name + ', live desktop preview', current.url); deskScreen.appendChild(fDesk); }
+    fit();
+  }
+  function openDemo(i, btn) {
+    current = DEMOS[i]; opener = btn;
+    title.textContent = current.name;
+    if (fDesk) { fDesk.remove(); fDesk = null; }
+    if (fMob) { fMob.remove(); fMob = null; }
+    viewer.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setDevice(window.innerWidth < 768 ? 'mobile' : 'desktop');
+    requestAnimationFrame(fit);
+    closeBtn.focus();
+  }
+  function closeDemo() {
+    viewer.hidden = true;
+    document.body.style.overflow = '';
+    if (fDesk) { fDesk.remove(); fDesk = null; }
+    if (fMob) { fMob.remove(); fMob = null; }
+    current = null;
+    if (opener) opener.focus();
+  }
+  document.querySelectorAll('.view').forEach(function (b) {
+    b.addEventListener('click', function () { openDemo(Number(b.getAttribute('data-demo')), b); });
+  });
+  btnDesk.addEventListener('click', function () { setDevice('desktop'); });
+  btnMob.addEventListener('click', function () { setDevice('mobile'); });
+  closeBtn.addEventListener('click', closeDemo);
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) closeDemo(); });
+  viewer.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeDemo(); return; }
+    if (e.key === 'Tab') {
+      var f = viewer.querySelectorAll('button:not([hidden]), iframe');
+      var list = Array.prototype.filter.call(f, function (el) { return el.offsetParent !== null; });
+      if (!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
