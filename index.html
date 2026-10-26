@@ -40,10 +40,9 @@ button{font:inherit}
 /* header */
 .hdr{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;min-height:64px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.logo-mark{width:14px;height:24px;border:1.5px solid var(--ink);border-radius:4px;position:relative;flex:none}
-.logo-mark:after{content:"";position:absolute;left:3px;right:3px;bottom:3px;height:4px;border-radius:1px;background:var(--ink)}
-.logo-text{font-family:'Gloock',Georgia,serif;font-size:20px;line-height:1}
+.logo{display:flex;align-items:center;gap:0;text-decoration:none;color:var(--ink)}
+.logo-text{font-family:'Gloock',Georgia,serif;font-size:25px;line-height:1;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.logo-text .lt2{color:var(--stone);margin-left:.22em}
 
 /* hero */
 .hero{padding:72px 0 112px}
@@ -201,7 +200,7 @@ button{font:inherit}
 @media (max-width:767px){
 .wrap{padding:0 16px}
 .hdr .wrap{min-height:56px}
-.logo-text{font-size:18px}
+.logo-text{font-size:22px}
 .hero{padding:40px 0 64px}
 .h1{font-size:40px;line-height:1.04;letter-spacing:-.01em;margin-top:16px}
 .lede{font-size:18px;line-height:1.6;margin-top:16px}
@@ -244,7 +243,7 @@ html{scroll-behavior:auto}
 
 <header class="hdr">
 <div class="wrap">
-<a class="logo" href="#top" aria-label="NexGen Funnels, back to top"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">NexGen Funnels</span></a>
+<a class="logo" href="#top" aria-label="NexGen Funnels, back to top"><span class="logo-text">NexGen<span class="lt2">Funnels</span></span></a>
 </div>
 </header>
 
@@ -427,7 +426,7 @@ html{scroll-behavior:auto}
 
 <footer class="ftr">
 <div class="wrap">
-<a class="logo" href="#top" aria-label="Coach Program Page Sprint, back to top"><span class="logo-mark" aria-hidden="true"></span><span class="logo-text">Coach Program Page Sprint</span></a>
+<a class="logo" href="#top" aria-label="NexGen Funnels, back to top"><span class="logo-text">NexGen<span class="lt2">Funnels</span></span></a>
 <p class="small">Kiran Kumar · Prefer WhatsApp? <a class="wa" href="https://wa.me/919113290223" target="_blank" rel="noopener">Message me</a> · © 2026</p>
 </div>
 </footer>
